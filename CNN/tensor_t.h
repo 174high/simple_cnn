@@ -53,6 +53,28 @@ struct tensor_t
 		assert( _x >= 0 && _y >= 0 && _z >= 0 );
 		assert( _x < size.x && _y < size.y && _z < size.z );
 
+/*
+         to get the data of tensor   
+	_z * (size.x * size.y) +_y * (size.x) +_x
+	  you can see that it gets the sequence of the data
+
+           t***
+           ****
+           ****
+           ****
+
+           **o*
+           ****
+	    ****
+	    ****
+
+           the position of 't' is 
+           0*4*4+0*4+0=0th
+
+           the position of 'o' is 
+	    1*4*4 +0*4+2=18th 
+	
+*/
 		return data[
 			_z * (size.x * size.y) +
 				_y * (size.x) +
