@@ -16,6 +16,9 @@ float train( vector<layer_t*>& layers, tensor_t<float>& data, tensor_t<float>& e
 			activate( layers[i], layers[i - 1]->out );
 	}
 
+    //the last one of layers minus the expected data 
+    //and get the difference 
+    //backpropogation knowledge 
 	tensor_t<float> grads = layers.back()->out - expected;
 
 	for ( int i = layers.size() - 1; i >= 0; i-- )

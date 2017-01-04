@@ -126,13 +126,27 @@ struct fc_layer_t
 		for ( int n = 0; n < out.size.x; n++ )
 		{
 			gradient_t& grad = gradients[n];
-			grad.grad = grad_next_layer( n, 0, 0 ) * activator_derivative( input[n] );
+/*
+                     the value of  ( output -expacted data )
+		       grad_next_layer( n, 0, 0 )
+		       
+                     derivative of input  
+                     activator_derivative( input[n] )
+
+                     algorithm of  propogation 
+                     grad_next_layer( n, 0, 0 ) * activator_derivative( input[n] );
+
+                     
+                    
+*/        
+            grad.grad = grad_next_layer( n, 0, 0 ) * activator_derivative( input[n] );
 
 			for ( int i = 0; i < in.size.x; i++ )
 				for ( int j = 0; j < in.size.y; j++ )
 					for ( int z = 0; z < in.size.z; z++ )
 					{
 						int m = map( { i, j, z } );
+						//n is output , it doesn't change when in  propogation   
 						grads_in( i, j, z ) += grad.grad * weights( m, n, 0 );
 					}
 		}
