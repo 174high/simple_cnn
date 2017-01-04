@@ -69,6 +69,29 @@ struct fc_layer_t
 				for ( int j = 0; j < in.size.y; j++ )
 					for ( int z = 0; z < in.size.z; z++ )
 					{
+/*
+            int m = map( { i, j, z } ); 
+            the purpose of map is get the sequence of weight and calculate with input data .
+             
+            1.input data 
+             * * * *
+             * * * *
+             * * * *
+             * * * *
+
+             * * * * 
+             * t * *
+             * * * *
+             * * * *
+ 
+             2.weight 
+              * * * *   * * * *   * * * *  * * * *   * * * *  * t * *  * * * *   * * * * 
+             
+
+             
+*/			
+
+
 						int m = map( { i, j, z } );
 						inputv += in( i, j, z ) * weights( m, n, 0 );
 					}
