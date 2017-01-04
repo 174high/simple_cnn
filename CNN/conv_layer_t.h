@@ -112,6 +112,33 @@ struct conv_layer_t
 			{
 				for ( int y = 0; y < out.size.y; y++ )
 				{
+/*
+    map_to_input () is used to change the  input data that is going to be 
+    mapped .the stride is used to control the step of  next input data .
+
+   for instance  stride=1.
+
+    1.first step 
+    t  t  t * * * * *
+    t  t  t * * * * *
+    t  t  t * * * * *
+    * * * * * * * *
+    * * * * * * * *
+    * * * * * * * *
+    * * * * * * * *
+    * * * * * * * *
+
+   2.next step 
+    * t  t  t  * * * *
+    * t  t  t  * * * *
+    * t  t  t  * * * *
+    * * * * * * * *
+    * * * * * * * *
+    * * * * * * * *
+    * * * * * * * *
+    * * * * * * * *
+*/
+				
 					point_t mapped = map_to_input( { (uint16_t)x, (uint16_t)y, 0 }, 0 );
 					float sum = 0;
 					for ( int i = 0; i < extend_filter; i++ )
